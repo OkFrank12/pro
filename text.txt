@@ -1,0 +1,205 @@
+import { AiTwotoneCamera } from "react-icons/ai";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
+
+const Profile = () => {
+  const [avatar, setAvatar] = useState<string>("");
+  const [image, setImage] = useState();
+
+  const schema = yup.object({
+    name: yup.string().required(),
+    address: yup.string().required(),
+    phoneNumber: yup.string().required(),
+    aboutUs: yup.string().required(),
+  });
+
+  const onHandleImage = (e: any) => {
+    try {
+      const file = e.target.files[0];
+      const realImage: any = URL.createObjectURL(file);
+      setImage(realImage);
+      setAvatar(file);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const {
+    register,
+    formState: { errors },
+    reset,
+    handleSubmit,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = handleSubmit((data: any) => {
+    const { address, phoneNumber, aboutUs, name } = data;
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("address", address);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("aboutUs", aboutUs);
+    formData.append("avatar", avatar);
+
+    reset();
+  });
+
+  const validateInput = (e: any) => {
+    const input = e.target;
+    const inputValue = input.value;
+
+    input.value = inputValue.replace(/\D/g, "");
+  };
+
+  return (
+    <div className="w-full h-[100vh] flex p-[10px] justify-center ">
+      <form
+        className="w-[400px] min-h-[50px] shadow-lg p-2"
+        onSubmit={onSubmit}
+      >
+        <div className="text-[17px] font-semibold rounded-md text-center mb-3">
+          My Information
+        </div>
+        <div className="flex flex-col items-center relative mb-[80px]">
+          <img
+            src={image}
+            alt=""
+            className="w-[80px] h-[80px] rounded-full border object-cover absolute"
+          />
+          <input
+            type="file"
+            className="hidden"
+            id="pix"
+            onChange={onHandleImage}
+          />
+          <label
+            htmlFor="pix"
+            className="hover:cursor-pointer duration-300 transition-all absolute text-[17px] top-[60px]"
+          >
+            <AiTwotoneCamera />
+          </label>
+        </div>
+
+        <div className="mb-2">
+          <div className="text-[14px] font-semibold mb-1">fullName</div>
+          <input
+            type="text"
+            placeholder="enter full name"
+            className="w-full h-[40px] rounded-md pl-[5px] outline-none border border-black placeholder:text-[13px]"
+            {...register("name")}
+          />
+          {errors.name && (
+            <div className="text-[10px] text-red-600 flex justify-end">
+              please input this field
+            </div>
+          )}
+        </div>
+
+        <div className="mb-2">
+          <div className="text-[14px] font-semibold mb-1">phoneNumber</div>
+          <input
+            type="text"
+            placeholder="+234 374 3743 274"
+            className="w-full h-[40px] rounded-md pl-[5px] outline-none border border-black placeholder:text-[13px]"
+            onInput={validateInput}
+            maxLength={11}
+            {...register("phoneNumber")}
+          />
+          {errors.phoneNumber && (
+            <div className="text-[10px] text-red-600 flex justify-end">
+              please input this field
+            </div>
+          )}
+        </div>
+
+        <div className="mb-2">
+          <div className="text-[14px] font-semibold mb-1">address</div>
+          <input
+            type="text"
+            placeholder="enter office address"
+            className="w-full h-[40px] rounded-md pl-[5px] outline-none border border-black placeholder:text-[13px]"
+            {...register("address")}
+          />
+          {errors.address && (
+            <div className="text-[10px] text-red-600 flex justify-end">
+              please input this field
+            </div>
+          )}
+        </div>
+
+        <div className="mb-2">
+          <div className="text-[14px] font-semibold mb-1">aboutUs</div>
+          <textarea
+            placeholder="write a short description"
+            className="w-full h-[50px] rounded-md pl-[5px] outline-none border border-black placeholder:text-[13px] resize-none"
+            {...register("aboutUs")}
+          />
+          {errors.aboutUs && (
+            <div className="text-[10px] text-red-600 flex justify-end">
+              please input this field
+            </div>
+          )}
+        </div>
+
+        <button
+          className=" mt-1 w-full h-[40px] rounded-md hover:cursor-pointer duration-300 transition-all bg-black text-white mb-[10px]"
+          type="submit"
+        >
+          save
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Profile;
+
+const Testimony = () => {
+  return (
+    <div>
+      <div className="w-full h-[auto]  p-6 pl-4 flex justify-between small:flex-col meduim:justify-center">
+      <div className=" w-[45%] h-full bg-lue-600 small:w-full meduim:w-full ">
+        <div className="py-4 mx-12 meduim:w-full">
+          <div className="w-[390px] h-[400px] meduim:w-full  ">
+            <div className="text-green-500 ">CLIENT'S FEEDBACK</div>
+            <div className="text-[35px] my-6 font-bold ">What People Say</div>
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti rem quasi nemo ab unde debitis, dolorem ut id est sed provident sit similique excepturi iure!</div>
+            <div className="w-[170px] h-[50px] my-[40px]  rounded-[30px] text-white flex justify-center items-center bg-green-500">view all reviewers</div>
+          </div>
+        <div className="w-[100vw] bg-green-500 h-[200px]">
+        <div className="w-[400px] h-[200px] border mt-[50px] p-6 font-bold meduim:w-[300px] bg-red-500  ">
+            <div>Most Popular Clients</div>
+          </div>
+        </div>
+        </div>
+        <div></div>
+      </div>
+      <div className="bg-yellow-00 w-[64%] h-full  flex-wrap small:full meduim:justify-center">
+        <div className="w-[780px] h-[520px]  mx-[30px] flex flex-wrap small:w-[620px]  relative ">
+          <div className=" h-[290px] w-[330px]border absolute bottom-12 left-[220px] bg-slate-100 -z-30 small:hidden"></div> 
+          <div className="w-[330px] h-[290px] border m-4  p-4 shadow-md  meduim:w-full small:w-[100vw] ">
+            <div className="flex p-4 text-[17px]">
+              <div className="w-[50px] h-[50px] rounded-[50%] border mr-4"></div>
+              <div className="small:text-[18px]">
+                <div className="font-bold">Shirley Smith</div>
+                <div>Founder & CEO</div>
+              </div>
+            </div>
+            <div className="my-4  small:text-[20px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptatibus!</div>
+            <div></div>
+          </div>
+
+   
+        
+        </div>
+      </div>
+      </div>
+    </div>
+  )
+}
+
+export default Testimony
