@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { onToggleState } from "../../global/globalState";
+import { onLogOut, onToggleState } from "../../global/globalState";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -36,6 +36,16 @@ const PopOutScreen = () => {
           </span>
           <span className="cursor-pointer hover:bg-[#001d23] hover:text-white transition-all duration-500 py-2">
             <Link to={`/profile/launch`}>Campaign</Link>
+          </span>
+          <span className="cursor-pointer hover:bg-[#001d23] hover:text-white transition-all duration-500 py-2">
+            <Link
+              to={`/`}
+              onClick={() => {
+                dispatch(onLogOut());
+              }}
+            >
+              logOut
+            </Link>
           </span>
         </div>
       </div>

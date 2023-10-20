@@ -10,20 +10,14 @@ import NewProfile from "../components/alternate/NewProfile";
 import Settings from "../components/alternate/Settings";
 import Projects from "../components/alternate/Projects";
 import Campaign from "../components/alternate/Campaign";
-import CheckOut from "../components/alternate/Checkout";
 import CheckOutPage from "../components/alternate/CheckOutPage";
 import ErrorScreen from "../error/js/Error";
 import DetailedScreen from "../Pages/screen/DetailedScreen";
-import PrivateRouter from "./PrivateRouter";
 
 export const mainRoute = createBrowserRouter([
   {
     path: "/profile",
-    element: (
-      // <PrivateRouter>
-      <Layout />
-      // </PrivateRouter>
-    ),
+    element: <Layout />,
     children: [
       {
         index: true,

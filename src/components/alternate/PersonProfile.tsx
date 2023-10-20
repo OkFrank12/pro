@@ -12,7 +12,7 @@ const PersonProfile: FC<iProps> = ({ props }) => {
   const toggle = useSelector((state: any) => state.newToggle);
   const { data } = useProfile(props);
   const dispatch = useDispatch();
-
+  console.log(user);
   const onChangeState = () => {
     dispatch(onNewToggleState(!toggle));
   };

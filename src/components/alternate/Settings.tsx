@@ -7,12 +7,9 @@ import { updateProfileAPI } from "../../api/ProfileAPI";
 import { useSelector } from "react-redux";
 
 const Settings = () => {
+  const navigate = useNavigate();
 
-  const navigate= useNavigate()
-
-  const user= useSelector((state:any)=> state.user)
-
-
+  const user = useSelector((state: any) => state.user);
 
   const [parent] = useAutoAnimate();
   const schema = yup.object({
@@ -29,12 +26,10 @@ const Settings = () => {
   });
 
   const onHandleSubmit = handleSubmit(async (data) => {
-    
-    updateProfileAPI(data, user).then((res)=>{
-      
-      navigate("/")
-    })
-
+    updateProfileAPI(data, user).then((res) => {
+      console.log(res);
+      navigate("/");
+    });
   });
 
   const validateInput = (e: any) => {
@@ -43,8 +38,6 @@ const Settings = () => {
 
     input.value = inputValue.replace(/\D/g, "");
   };
-
-
 
   return (
     <>

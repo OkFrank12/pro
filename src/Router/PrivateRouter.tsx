@@ -1,12 +1,8 @@
-import jwtDecode from "jwt-decode";
-import React, { PropsWithChildren, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { onUserState } from "../global/globalState";
+import React, { PropsWithChildren } from "react";
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const PrivateRouter: React.FC<PropsWithChildren> = ({ children }) => {
-  const dispatch = useDispatch();
-
   const user = useSelector((state: any) => state.user);
   console.log(user);
 

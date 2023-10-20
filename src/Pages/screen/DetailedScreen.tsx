@@ -1,29 +1,16 @@
-import pix from "../../assets/react.svg";
 import {
   AiOutlineTwitter,
   AiOutlineInstagram,
   AiFillLinkedin,
-  AiOutlineClose,
 } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
-import { onNewToggleState } from "../../global/globalState";
-import { FC } from "react";
 import PersonProfile from "../../components/alternate/PersonProfile";
 import { Link, useParams } from "react-router-dom";
 import { useOneProject } from "../../hooks/customHooks";
 
-interface iProps {
-  props?: any;
-}
-const DetailedScreen: FC<iProps> = ({ props }) => {
+const DetailedScreen = () => {
   const { id } = useParams();
   console.log(id);
-  const dispatch = useDispatch();
-  const toggle = useSelector((state: any) => state.newToggle);
-  const onChangeState = () => {
-    dispatch(onNewToggleState(!toggle));
-  };
 
   const { data } = useOneProject(id!);
 
