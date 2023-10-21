@@ -13,7 +13,7 @@ const DashboardHeader = () => {
     dispatch(onToggleState(!toggle));
   };
   const user = useSelector((state: any) => state.user);
-  const { data, isLoading } = useProfile(user);
+  const { data } = useProfile(user);
   console.log(data);
   return (
     <>

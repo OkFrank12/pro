@@ -1,4 +1,4 @@
-import { useAllProfile, useProfile } from "../../hooks/customHooks";
+import { useProfile } from "../../hooks/customHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { onNewToggleState } from "../../global/globalState";
 import { FC } from "react";
@@ -8,7 +8,6 @@ interface iProps {
 }
 
 const PersonProfile: FC<iProps> = ({ props }) => {
-  const user = useSelector((state: any) => state.user);
   const toggle = useSelector((state: any) => state.newToggle);
   const { data } = useProfile(props);
   const dispatch = useDispatch();
