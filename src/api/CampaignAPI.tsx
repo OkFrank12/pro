@@ -26,6 +26,12 @@ export const getOneCampaign = async (projectID: string) => {
   });
 };
 
+export const getOneCampaignPop = async (projectID: string) => {
+  return await axios.get(`${url}/api/${projectID}/view-one-beg-pop`).then((res) => {
+    return res.data.data;
+  });
+};
+
 export const accountPay = async (abegID: any, data: any) => {
   try {
     return await axios

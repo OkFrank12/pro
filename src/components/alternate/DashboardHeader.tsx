@@ -3,6 +3,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { onLogOut, onToggleState } from "../../global/globalState";
 import PopOutScreen from "./PopOutScreen";
+import { useProfile } from "../../hooks/customHooks";
 
 const DashboardHeader = () => {
   const toggle = useSelector((state: any) => state.toggle);
@@ -11,13 +12,19 @@ const DashboardHeader = () => {
   const onChangeToggle = () => {
     dispatch(onToggleState(!toggle));
   };
-  
+  const user = useSelector((state: any) => state.user);
+  const { data, isLoading } = useProfile(user);
+  console.log(data);
   return (
     <>
       <div className="flex text-white bg-[#001d23] z-10 w-full fixed h-[70px]">
         <div className="absolute justify-between z-40 bg-opacity-10 shadow-md p-3 flex items-center w-full h-full">
           <p className="text-[35px] flex tablet:text-[30px] items-center smallTab:text-[15px]">
-            Dashboard
+            <img
+              src={data?.avatar}
+              className="w-[50px] h-[50px] rounded-full"
+            />
+            {data?.name}'s Dashboard
           </p>
           <div className="flex tablet:hidden items-center ml-5">
             <span className="cursor-pointer hover:scale-[1.09] mx-5">

@@ -53,28 +53,20 @@ const NewProfile = () => {
       setLoading(true);
       if (res) {
         Swal.fire({
-          title: "Profile Succesfully Created😊",
-          showClass: {
-            popup: "animate_animated animate_fadeInDown",
-          },
-          hideClass: {
-            popup: "animate_animated animate_fadeOutUp",
-          },
+          icon: "success",
+          text: `Profile Succesfully Created`,
+          timer: 3000,
+          showCancelButton: false,
         }).then(() => {
           setLoading(false);
           navigate("/profile/launch");
         });
       } else {
-        navigate("/profile");
         Swal.fire({
-          title: "Error Occured While Creating Profile 😢😢",
-          showClass: {
-            popup: "animate_animated animate_fadeInDown",
-          },
           icon: "error",
-          hideClass: {
-            popup: "animate_animated animate_fadeOutUp",
-          },
+          text: `Profile creation unsuccessful`,
+          timer: 3000,
+          showCancelButton: false,
         });
       }
     });

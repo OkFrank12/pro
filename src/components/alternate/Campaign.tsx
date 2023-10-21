@@ -40,7 +40,6 @@ const Campaign = () => {
   const onHandleSubmit = handleSubmit(async (data: any) => {
     const { title, amountNeeded, motivation, description, category } = data;
     
-    setLoading(true);
     const formdata: any = new FormData();
     formdata.append("title", title);
     formdata.append("motivation", motivation);
@@ -50,6 +49,7 @@ const Campaign = () => {
     formdata.append("image", image);
 
     createCampaign(formdata, user).then((res: any) => {
+    setLoading(true);
       if (res) {
         Swal.fire({
           icon: "success",

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { viewOneAPI } from "../api/authAPI";
-import { getCampaign, getOneCampaign } from "../api/CampaignAPI";
-import { profileAPIGet } from "../api/ProfileAPI";
+import { getCampaign, getOneCampaign, getOneCampaignPop } from "../api/CampaignAPI";
+import { profileAPIGet, viewAllProfiles } from "../api/ProfileAPI";
 
 export const useOneUser = (id: string) => {
   const { data, isLoading } = useQuery({
@@ -30,10 +30,28 @@ export const useOneProject = (id: string) => {
   return { data, isLoading };
 };
 
+export const useOneProjectPop = (id: string) => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["useProjectOnePop"],
+    queryFn: () => getOneCampaignPop(id),
+  });
+
+  return { data, isLoading };
+};
+
 export const useProfile = (userID: string) => {
   const { data, isLoading } = useQuery({
     queryKey: ["useProfile"],
     queryFn: () => profileAPIGet(userID),
   });
+  return { data, isLoading };
+};
+
+export const useAllProfile = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["useAllProfiles"],
+    queryFn: viewAllProfiles,
+  });
+
   return { data, isLoading };
 };

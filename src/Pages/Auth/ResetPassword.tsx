@@ -32,7 +32,7 @@ const Resetpassword = () => {
           timer: 3000,
           timerProgressBar: true,
         }).then(() => {
-          navigate("/message");
+          navigate("/message-two");
         });
       } else {
         Swal.fire({

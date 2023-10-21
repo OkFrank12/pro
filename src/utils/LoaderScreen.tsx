@@ -20,7 +20,7 @@ const LoadingScreen = () => {
         ariaLabel="ball-triangle-loading"
         visible={true}
       />
-      <div className="mt-8">Processing Request...If it takes longer time...😖😖😖Check connection</div>
+      <div className="mt-8 text-center text-[13px]">getting datas</div>
     </div>
   );
 };

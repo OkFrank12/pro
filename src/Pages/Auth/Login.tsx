@@ -35,10 +35,10 @@ const Login = () => {
   });
 
   const onHandleSubmit = handleSubmit(async (data: any) => {
-    console.log(data);
     signInAPI(data).then((res: any) => {
       setLoading(true);
       if (res) {
+        console.log(res)
         Swal.fire({
           icon: "success",
           text: `Welcome 💡💡`,

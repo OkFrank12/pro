@@ -43,3 +43,13 @@ export const profileAPIGet = async (userID: string) => {
     console.log(error);
   }
 };
+
+export const viewAllProfiles = async () => {
+  try {
+    return await axios.get(`${url}/api/find-profiles`).then((res: any) => {
+      return res.data.data;
+    });
+  } catch (error: any) {
+    console.log(error);
+  }
+};

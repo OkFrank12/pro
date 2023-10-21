@@ -1,18 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../components/common/Layout";
-import Register from "../Pages/Auth/Register";
-import Login from "../Pages/Auth/Login";
-import Resetpassword from "../Pages/Auth/ResetPassword";
-import ChangePassword from "../Pages/Auth/ChangePassword";
-import MessagePage from "../Pages/screen/MessagePage";
-import AlternatePage from "../Pages/screen/AlternatePage";
-import NewProfile from "../components/alternate/NewProfile";
-import Settings from "../components/alternate/Settings";
-import Projects from "../components/alternate/Projects";
-import Campaign from "../components/alternate/Campaign";
-import CheckOutPage from "../components/alternate/CheckOutPage";
-import ErrorScreen from "../error/js/Error";
-import DetailedScreen from "../Pages/screen/DetailedScreen";
+import loadable from "@loadable/component";
+const Layout = loadable(() => import("../components/common/Layout"));
+const Register = loadable(() => import("../Pages/Auth/Register"));
+const Login = loadable(() => import("../Pages/Auth/Login"));
+const Resetpassword = loadable(() => import("../Pages/Auth/ResetPassword"));
+const ChangePassword = loadable(() => import("../Pages/Auth/ChangePassword"));
+const MessagePage = loadable(() => import("../Pages/screen/MessagePage"));
+const AlternatePage = loadable(() => import("../Pages/screen/AlternatePage"));
+const NewProfile = loadable(() => import("../components/alternate/NewProfile"));
+const Settings = loadable(() => import("../components/alternate/Settings"));
+const Projects = loadable(() => import("../components/alternate/Projects"));
+const Campaign = loadable(() => import("../components/alternate/Campaign"));
+const CheckOutPage = loadable(
+  () => import("../components/alternate/CheckOutPage")
+);
+const ErrorScreen = loadable(() => import("../error/js/Error"));
+const DetailedScreen = loadable(() => import("../Pages/screen/DetailedScreen"));
+const MessageTwo = loadable(() => import("../Pages/screen/MessageTwo"));
 
 export const mainRoute = createBrowserRouter([
   {
@@ -83,5 +87,9 @@ export const mainRoute = createBrowserRouter([
   {
     path: "*",
     element: <ErrorScreen />,
+  },
+  {
+    path: "/message-two",
+    element: <MessageTwo />,
   },
 ]);
