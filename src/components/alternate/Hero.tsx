@@ -17,13 +17,17 @@ const Hero = () => {
           </span>
         </span>
         <div className="w-full relative h-full justify-center py-5 items-center flex-col flex">
-          <img src={heroImg} className="absolute tablet:hidden blur-sm left-0" alt="" />
+          <img
+            src={heroImg}
+            className="absolute tablet:hidden blur-sm left-0"
+            alt=""
+          />
           {/* <img src={heroImg1} className="absolute right-0 w-10" alt="" /> */}
           <span className="text-slate-500 tablet:mt-7 capitalize font-bold mt-20">
             green energy
           </span>
           <p className="text-[#001D23] medium:text-[60px] smallTab:text-[30px] smallTab:w-[100%] tablet:text-[45px] tablet:w-[90%] font-bold text-[80px] w-[70%] text-center">
-            Raise Hand to Promote Best Products
+            Building Sustainable Products in Our Solar Eco System
           </p>
           <div className="flex">
             {/* <button className="mt-5 flex mx-3 items-center px-[30px] py-3 border border-[#001D23] hover:bg-[#001D23] hover:rounded-md transition-all duration-300 hover:text-white text-[#001D23] font-bold rounded-full">
