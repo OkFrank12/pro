@@ -38,18 +38,17 @@ const Login = () => {
     signInAPI(data).then((res: any) => {
       setLoading(true);
       if (res) {
-        console.log(res)
+        console.log(res);
         Swal.fire({
           icon: "success",
           text: `Welcome 💡💡`,
           timer: 3000,
           showCancelButton: false,
-        }).then(() => {
-          setLoading(false);
-          const decode: any = jwtDecode(res);
-          dispatch(onUserState(decode.id));
-          navigate("/profile");
         });
+        setLoading(false);
+        const decode: any = jwtDecode(res);
+        dispatch(onUserState(decode.id));
+        navigate("/profile");
       } else {
         Swal.fire({
           icon: "warning",
